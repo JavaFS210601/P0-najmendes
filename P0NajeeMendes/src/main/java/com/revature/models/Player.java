@@ -34,7 +34,7 @@ public class Player {
 //toString() for player id and user name only
 	@Override
 	public String toString() {
-		return "Player [player_id=" + player_id + ", user_name=" + user_name + "]";
+		return "Player [player Id: " + player_id + ", username: " + user_name + "]";
 	}
 
 

@@ -15,7 +15,7 @@ public class PlayerDao implements PlayerDaoInterface {
 	@Override
 	public List<Player> getPlayers() {
 
-		try (Connection conn = new ConnectionUtil.getConnection()){
+		try (Connection conn = ConnectionUtil.getConnection()){
 			
 			ResultSet rs = null;
 			
