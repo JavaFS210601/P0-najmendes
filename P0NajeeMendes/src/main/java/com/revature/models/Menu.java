@@ -2,11 +2,11 @@ package com.revature.models;
 
 import java.util.Scanner;
 
-import com.revature.daos.PlayerCollection;
+import com.revature.daos.PlayerDao;
 
 public class Menu {
 	
-		PlayerCollection pc = new PlayerCollection();
+		PlayerDao pc = new PlayerDao();
 		
 		public void displayMenu() {
 			
