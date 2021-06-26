@@ -22,12 +22,20 @@ public class Player {
 		this.user_name = user_name;
 	}//all-args
 
-
+	public Player(String first_name, String last_name, String user_name) {
+		super();
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.user_name = user_name;
+	}//all-args minus id
+	
 	public Player(int player_id, String user_name) {
 		super();
 		this.player_id = player_id;
 		this.user_name = user_name;
-	}//all args - id
+	}//username and id constructor
+
+	
 
 	
 	

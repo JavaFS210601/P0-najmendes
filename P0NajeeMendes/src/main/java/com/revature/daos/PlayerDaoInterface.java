@@ -8,7 +8,9 @@ public interface PlayerDaoInterface {
 
 	public List<Player> getPlayers();
 	
+	public void addNewPlayer(Player player);
 	
+	public Player loadSavedPlayer(String user_name);
 	
 	
 	
