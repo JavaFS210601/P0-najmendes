@@ -37,12 +37,10 @@ public class Player {
 
 	
 
-	
-	
-//toString() for player id and user name only
+
 	@Override
 	public String toString() {
-		return "Player [player Id: " + player_id + ", username: " + user_name + "]";
+		return "Player [Player's Name: " + first_name + " ----> " + last_name + " Player's username: " + user_name + "]";
 	}
 
 
