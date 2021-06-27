@@ -1,20 +1,22 @@
 package com.revature.models;
 
-import java.util.List;
 import java.util.Scanner;
 
 import com.revature.daos.AccountsDao;
 import com.revature.daos.PlayerDao;
+import com.revature.gamelogic.GameMenu;
 
 
 public class Menu {
 	
 		PlayerDao playerDao = new PlayerDao();
 		AccountsDao accountDao = new AccountsDao();
+		GameMenu gameMenu = new GameMenu();
 		
 		public void displayMenu() {
 			
 			boolean display = true;
+			boolean playGame = true;
 			Scanner scan = new Scanner(System.in);
 			
 			while (display==true) {
@@ -46,9 +48,7 @@ public class Menu {
 //						break;
 //					}//case "leader board"
 				
-					
-					
-					
+									
 					case "new":{
 						System.out.println("LET'S SET UP A NEW PLAYER FOR YOU!\n");
 						//inserting into to player table
@@ -88,23 +88,23 @@ public class Menu {
 						Account newAccount = new Account(savings, stocks, cryptos, bonds, player_id_fk);
 						accountDao.addNewAccount(newAccount); 
 						
+//						System.out.println("Enter username to access account information.");
+//						user_name = scan.nextLine();
+						
 						break;
 					}//case new game
 					
-					
-					
-					
-					
-					case "play":{//change to "change username")
-					
+															
+					case "play":{
+						System.out.println("\nLet's Get Started with Today's Net Growth\n"
+								+ "Enter your username:");
+						String user_name = scan.nextLine();
+						//gameMenu.playGame(user_name);
+						accountDao.checkBalances(user_name);
 						break;
-					}//case load game
-					
-					
-					
-					
-					
-					
+					}//case play game
+				
+						
 					case "delete":{
 						System.out.println("\nDELETING PLAYER ACCOUNT CANNOT BE UNDONE.\n"
 								+ "YOU MUST MAKE A NEW ACCOUNT IF YOU EVER WANT TO PLAY AGAIN!\n");
@@ -115,16 +115,14 @@ public class Menu {
 						break;
 					}//case load game
 	
-					
-									
+														
 					case "exit": {
 						System.out.println("See you next time!");
 						display = false;
 						break;
 					}//case exit
 					
-					
-					
+									
 					default : {
 						System.out.println("Didn't catch that...try again");//in case user input doesn't match any cases
 						break;

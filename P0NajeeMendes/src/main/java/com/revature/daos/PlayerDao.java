@@ -91,15 +91,12 @@ public class PlayerDao implements PlayerDaoInterface {
 			
 			ps.executeUpdate();
 			System.out.println(user_name + " has been deleted from the system!\n");
-			
-			
+					
 		}catch (SQLException e) {
 			System.out.println("DELETING PLAYER ACCOUNT FAILED!\n");
 			e.printStackTrace();
 			
-		}
-		
-		
+		}//catch		
 	}//delete player
 
 
