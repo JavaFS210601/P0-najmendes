@@ -3,8 +3,12 @@ package com.revature.gamelogic;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.revature.daos.AccountsDao;
 import com.revature.models.Account;
+import com.revature.models.Menu;
 import com.revature.models.Player;
 
 public class GameMenu {
@@ -13,9 +17,11 @@ public class GameMenu {
 	
 	Scanner scan = new Scanner(System.in);
 	AccountsDao accountDao = new AccountsDao();
+	final Logger log = LogManager.getLogger(Menu.class);
 			
 	public void playGame(String user_name) {		
 		user_name = user_name;
+		
 		
 		while(startGame == true) {
 			System.out.println("                      -----------------------");
@@ -23,17 +29,16 @@ public class GameMenu {
 			System.out.println("                              ======         ");
 			System.out.println("                   - enter number option below -");			
 			System.out.println("                      -----------------------\n");
-			System.out.println("           (1) Balance  ->  View balance of your assets");	//works
-			System.out.println("           (2) Save     ->  Deposit into savings (inflation**) "); //works ...need update & blurb on savings
-			System.out.println("           (3) Stocks   ->  Invest in Stocks (moderate-aggressive*)"); //works ...need update & blurb on savings
-			System.out.println("           (4) Cryptos  ->  Invest in Cryptocurrency (AGGRESSIVE*)"); //works
-			System.out.println("           (5) Bonds    ->  Invest in Bonds (conservative*)"); //works
-			//at withdrawal method???
-			System.out.println("           (6) Main     ->  Go back to main menu\n\n"); //works
-			System.out.println("           * Level of risk associated with asset. Person usually \n"
-							 + "             chooses based on their individual risk tolerance.");
-			System.out.println("           ** A savings account is an asset that puts your money\n"
-							 + "              at higher risk of inflation.");
+			System.out.println("                 (1)     ->   View balance of your assets");	//works
+			System.out.println("                 (2)     ->   Deposit into savings (inflation**) "); //works 
+			System.out.println("                 (3)     ->   Invest in Stocks (moderate-aggressive*)"); //works 
+			System.out.println("                 (4)     ->   Invest in Cryptocurrency (AGGRESSIVE*)"); //works
+			System.out.println("                 (5)     ->   Invest in Bonds (conservative*)"); //works
+			System.out.println("                 (6)     ->   Go back to main menu\n\n"); //works
+			System.out.println("             * Level of risk associated with asset. Person usually \n"
+							 + "               chooses based on their individual risk tolerance.");
+			System.out.println("             ** A savings account is an asset that puts your money\n"
+							 + "                at higher risk of inflation.");
 			
 			
 			
@@ -60,11 +65,11 @@ public class GameMenu {
 					accountDao.updateSavings(capital, user_name);
 					scan.nextLine();
 					
-						System.out.println("Enter any digit to update total balance.");
+						System.out.println("Enter 1 to confirm request.");
 						scan.nextInt();
 						accountDao.updateTotalBalance(user_name);
 						
-						System.out.println("Enter any digit to view your account.");
+						System.out.println("Enter 1 to view your account balance.");
 						scan.nextInt();
 						
 						List<Account> accountStats = accountDao.checkBalances(user_name);
@@ -83,11 +88,11 @@ public class GameMenu {
 					accountDao.updateStocks(capital, user_name);
 					scan.nextLine();
 					
-						System.out.println("Enter any digit to update total balance.");
+						System.out.println("Enter 1 to confirm request.");
 						scan.nextInt();
 						accountDao.updateTotalBalance(user_name);
 						
-						System.out.println("Enter any digit to view your account.");
+						System.out.println("Enter 1 to view your account balance.");
 						scan.nextInt();
 						
 						List<Account> accountStats = accountDao.checkBalances(user_name);
@@ -113,11 +118,11 @@ public class GameMenu {
 						accountDao.updateCryptos(gains, user_name);
 						scan.nextLine();
 						
-							System.out.println("Enter any digit to update total balance.");
+							System.out.println("Enter 1 to confirm request.");
 							scan.nextInt();
 							accountDao.updateTotalBalance(user_name);
 							
-							System.out.println("Enter any digit to view your account.");
+							System.out.println("Enter 1 to view your account balance.");
 							scan.nextInt();
 							
 							List<Account> accountStats = accountDao.checkBalances(user_name);
@@ -135,11 +140,11 @@ public class GameMenu {
 					accountDao.updateBonds(capital, user_name);
 					scan.nextLine();	
 					
-						System.out.println("Enter any digit to update total balance.");
+						System.out.println("Enter 1 to confirm request.");
 						scan.nextInt();
 						accountDao.updateTotalBalance(user_name);
 						
-						System.out.println("Enter any digit to view your account.");
+						System.out.println("Enter 1 to view your account balance.");
 						scan.nextInt();
 						
 						List<Account> accountStats = accountDao.checkBalances(user_name);
@@ -151,12 +156,14 @@ public class GameMenu {
 				}	
 				
 				case 6:{
+					log.info("User has exited simulation!");
 					startGame = false;
 					break;	
 				}	
 				
 				default:{
-					System.out.println("Sorry, I don't understand");
+					log.warn("Invalid input was entered!");
+					System.out.println("Didn't catch that...try again.");
 					scan.nextLine();
 					break;	
 				}				

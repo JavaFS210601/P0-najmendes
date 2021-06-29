@@ -231,24 +231,11 @@ public class AccountsDao implements AccountsDaoInterface{
 		}catch (SQLException e) {
 		System.out.println("DEPOSITING MONEY FAILED!\n");
 		e.printStackTrace();
+		}
 	}
-	}
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 }//class

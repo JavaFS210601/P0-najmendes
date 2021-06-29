@@ -1,0 +1,12 @@
+2021-06-29 12:57:05 INFO  Menu:49 - User selected list of all users
+2021-06-29 12:58:33 WARN  Menu:145 - Invalid input was entered!
+2021-06-29 13:10:18 INFO  Menu:112 - New user was created
+2021-06-29 13:11:42 INFO  Menu:99 - New user was created
+2021-06-29 13:13:31 INFO  Menu:99 - New user was created
+2021-06-29 13:14:03 WARN  Menu:145 - Invalid input was entered!
+2021-06-29 13:14:14 WARN  Menu:145 - Invalid input was entered!
+2021-06-29 13:16:50 WARN  Menu:132 - Invalid input was entered!
+2021-06-29 13:42:10 INFO  Menu:158 - User is exiting simulation!
+2021-06-29 13:44:51 INFO  Menu:158 - User has exited simulation!
+2021-06-29 13:44:51 WARN  Menu:122 - User has entered simulation.
+2021-06-29 13:45:51 INFO  Menu:159 - User has exited simulation!
