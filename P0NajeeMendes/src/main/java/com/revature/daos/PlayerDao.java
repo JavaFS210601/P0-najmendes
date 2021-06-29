@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.revature.models.Account;
 import com.revature.models.Player;
 import com.revature.utils.ConnectionUtil;
 
@@ -47,9 +48,6 @@ public class PlayerDao implements PlayerDaoInterface {
 //	}//getPLayers
 
 	
-
-
-
 
 	@Override
 	public void addNewPlayer(Player player) {

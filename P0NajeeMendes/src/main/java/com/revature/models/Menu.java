@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.revature.daos.AccountsDao;
@@ -20,34 +21,37 @@ public class Menu {
 			Scanner scan = new Scanner(System.in);
 			
 			while (display==true) {
-				System.out.println("===========================================");
-				System.out.println("             GROW YOUR NET ");
-				System.out.println("      - Investing Simulation Game - "); //OR just - Investing Simulation - ...?
-				System.out.println("===========================================\n");
-				System.out.println("        -----------------------");
-				System.out.println("        CHOOSE AN OPTION BELOW");
-				System.out.println("        -----------------------\n");
-				System.out.println("      board   ->  view leader board");//can this be ordered by total_balance? yess using inner join...
-				System.out.println("      new     ->  add new player");	//but i gotta connect playerdao class w/ accountdao class for this to work
-				System.out.println("      play    ->  play game");		//using query: SELECT * FROM players INNER JOIN account_numbers ON player_id_fk = player_id ORDER BY total_balance DESC;
-				System.out.println("      delete  ->  delete your info");				
-				System.out.println("      exit    ->  exit");				
+				System.out.println("==================================================================");
+				System.out.println("                            GROW YOUR NET ");
+				System.out.println("                            ------------- ");
+				System.out.println("                      - Investing Simulation - "); 
+				System.out.println("==================================================================\n");
+				System.out.println("                      -----------------------");
+				System.out.println("                      CHOOSE AN OPTION BELOW");
+				System.out.println("                      ======================");
+				System.out.println("                      - type a word below -");	
+				System.out.println("                      -----------------------\n");
+				System.out.println("                all     ->  list of users");//...have to figure out what to order it by ...? MIGHT TAKE THIS OUT THOUGH...
+				System.out.println("                new     ->  add new user");	//WORKS
+				System.out.println("                start   ->  start simulation");	//works
+				System.out.println("                delete  ->  delete your user info");//WORKS				
+				System.out.println("                exit    ->  exit the application");//WORKS				
 														
 				String input = scan.nextLine().toLowerCase();
 				
 				switch (input){
 				
-//					case "board":{
-//						System.out.println("LOADING LEADER BOARD.....\n");
-//						
-//						List<Player> players = playerDao.getPlayers();
-//						
-//						for (Player p : players) {
-//							System.out.println(p);
-//						}
-//						break;
-//					}//case "leader board"
-				
+					case "all":{
+						System.out.println("LOADING USERS' STATUS.....\n");
+						
+						List<Account> accounts = accountDao.showLeaderboard();
+						
+						for (Account a : accounts) {
+							System.out.println(a.getPlayer_id_fk() + "--------> TOTAL ACCOUNT BALANCE $" + a.getTotal_balance());
+							
+						}
+						break;
+					}//case "leader board"				
 									
 					case "new":{
 						System.out.println("LET'S SET UP A NEW PLAYER FOR YOU!\n");
@@ -64,8 +68,8 @@ public class Menu {
 						
 						System.out.println("LET'S ADD SOME MONEY TO YOUR ACCOUNT!\n");
 						//inserting into account table		
-						System.out.println("Enter your username: ");
-						String player_id_fk = scan.nextLine();	
+//						System.out.println("Enter your username: ");
+//						String player_id_fk = scan.nextLine();	
 						
 						System.out.println("Now...take some time to think about how you want to stash you cash.\n"
 								+ "You will be asked how much money you want to allocate to each of the following assets:\n"
@@ -84,23 +88,33 @@ public class Menu {
 						System.out.println("How much money do you want to invest in bonds?");
 						int bonds = scan.nextInt();
 						scan.nextLine();
-																
-						Account newAccount = new Account(savings, stocks, cryptos, bonds, player_id_fk);
+						
+						//"user_name" is used to represent the 'player_id_fk" for this method, so i don't have to repeatedly ask user to enter their user_name																
+						Account newAccount = new Account(savings, stocks, cryptos, bonds, user_name); 
 						accountDao.addNewAccount(newAccount); 
 						
-//						System.out.println("Enter username to access account information.");
-//						user_name = scan.nextLine();
+						System.out.println("Enter any LETTER to calculate total balance.");
+						scan.nextLine();
+						accountDao.updateTotalBalance(user_name);
 						
+						System.out.println("Enter any LETTER to view your account.");
+						scan.nextLine();
+						
+						List<Account> accountStats = accountDao.checkBalances(user_name);
+						
+						for (Account a : accountStats) {
+							System.out.println(a);
+							System.out.println(a.getPlayer_id_fk() + " " + a.getTotal_balance());
+						}					
 						break;
 					}//case new game
 					
 															
-					case "play":{
+					case "start":{
 						System.out.println("\nLet's Get Started with Today's Net Growth\n"
 								+ "Enter your username:");
 						String user_name = scan.nextLine();
-						//gameMenu.playGame(user_name);
-						accountDao.checkBalances(user_name);
+						gameMenu.playGame(user_name);
 						break;
 					}//case play game
 				
@@ -110,8 +124,7 @@ public class Menu {
 								+ "YOU MUST MAKE A NEW ACCOUNT IF YOU EVER WANT TO PLAY AGAIN!\n");
 						System.out.println("Enter your username: ");
 						String user_name = scan.nextLine();
-						playerDao.deletePlayer(user_name);
-						
+						playerDao.deletePlayer(user_name);						
 						break;
 					}//case load game
 	

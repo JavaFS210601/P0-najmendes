@@ -2,6 +2,7 @@ package com.revature.daos;
 
 import java.util.List;
 
+import com.revature.models.Account;
 import com.revature.models.Player;
 
 public interface PlayerDaoInterface {
@@ -13,7 +14,6 @@ public interface PlayerDaoInterface {
 	public void deletePlayer(String user_name);
 	
 	//public Player loadSavedPlayer(String user_name);
-	
 	
 	
 	

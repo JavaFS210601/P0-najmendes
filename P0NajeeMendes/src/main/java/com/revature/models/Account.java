@@ -18,7 +18,7 @@ public class Account {
 
 
 	
-	public Account(int savings, int stocks, int cryptos, int bonds, String player_id_fk) {
+	public Account(int savings, int stocks, int cryptos, int bonds, String player_id_fk) {//used for new account
 		super();
 		this.savings = savings;
 		this.stocks = stocks;
@@ -27,9 +27,13 @@ public class Account {
 		this.player_id_fk = player_id_fk;
 	}
 
+	public Account(int total_balance, String player_id_fk) {//used for leaderboard
+		//super();
+		this.total_balance = total_balance;
+		this.player_id_fk = player_id_fk;
+	}
 
-
-	public Account(int savings, int stocks, int cryptos, int bonds, int total_balance, String player_id_fk) {
+	public Account(int savings, int stocks, int cryptos, int bonds, int total_balance, String player_id_fk) {//used for checkBalances
 		super();
 		this.savings = savings;
 		this.stocks = stocks;
@@ -40,12 +44,12 @@ public class Account {
 	}
 
 
+	
 	@Override
 	public String toString() {
-		return "Username:"  + player_id_fk + "---> Account: total balance = $" + total_balance + ", "
+		return player_id_fk + "---> STATS: total balance = $" + total_balance + ", "
 				+ "stocks = $" + stocks + ", cryptos = $" + cryptos + ", bonds = $" + bonds + ", savings = $" + savings;
 	}
-
 
 	public int getSavings() {
 		return savings;
