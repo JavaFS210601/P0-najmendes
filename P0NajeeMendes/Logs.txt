@@ -10,3 +10,22 @@
 2021-06-29 13:44:51 INFO  Menu:158 - User has exited simulation!
 2021-06-29 13:44:51 WARN  Menu:122 - User has entered simulation.
 2021-06-29 13:45:51 INFO  Menu:159 - User has exited simulation!
+2021-06-29 13:48:30 INFO  Menu:99 - A new user account was added to the database
+2021-06-29 18:38:54 WARN  Menu:154 - Invalid input was entered!
+2021-06-29 22:18:12 INFO  Menu:107 - A new user account was added to the database
+2021-06-29 22:20:03 INFO  Menu:164 - User has exited simulation!
+2021-06-29 22:20:15 WARN  Menu:140 - A user has been deleted from the database!
+2021-06-29 22:28:43 INFO  Menu:107 - A new user account was added to the database
+2021-06-29 22:40:53 INFO  Menu:107 - A new user account was added to the database
+2021-06-29 22:41:10 WARN  Menu:140 - A user has been deleted from the database!
+2021-06-29 22:47:09 INFO  Menu:107 - A new user account was added to the database
+2021-06-29 22:48:48 WARN  Menu:140 - A user has been deleted from the database!
+2021-06-29 22:56:13 INFO  Menu:107 - A new user account was added to the database
+2021-06-29 22:57:54 INFO  Menu:164 - User has exited simulation!
+2021-06-29 22:58:04 WARN  Menu:140 - A user has been deleted from the database!
+2021-06-29 23:28:21 INFO  Menu:107 - A new user account was added to the database
+2021-06-29 23:31:59 INFO  Menu:164 - User has exited simulation!
+2021-06-29 23:32:07 WARN  Menu:140 - A user has been deleted from the database!
+2021-06-29 23:35:50 INFO  Menu:107 - A new user account was added to the database
+2021-06-29 23:38:04 INFO  Menu:164 - User has exited simulation!
+2021-06-29 23:38:19 WARN  Menu:140 - A user has been deleted from the database!

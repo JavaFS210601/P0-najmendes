@@ -17,7 +17,8 @@ public class GameMenu {
 	
 	Scanner scan = new Scanner(System.in);
 	AccountsDao accountDao = new AccountsDao();
-	final Logger log = LogManager.getLogger(Menu.class);
+	SimulationInfo simulationInfo = new SimulationInfo();
+	final Logger log = LogManager.getLogger(Menu.class);//change to GameMenu.class...!?
 			
 	public void playGame(String user_name) {		
 		user_name = user_name;
@@ -29,12 +30,13 @@ public class GameMenu {
 			System.out.println("                              ======         ");
 			System.out.println("                   - enter number option below -");			
 			System.out.println("                      -----------------------\n");
-			System.out.println("                 (1)     ->   View balance of your assets");	//works
-			System.out.println("                 (2)     ->   Deposit into savings (inflation**) "); //works 
-			System.out.println("                 (3)     ->   Invest in Stocks (moderate-aggressive*)"); //works 
-			System.out.println("                 (4)     ->   Invest in Cryptocurrency (AGGRESSIVE*)"); //works
-			System.out.println("                 (5)     ->   Invest in Bonds (conservative*)"); //works
-			System.out.println("                 (6)     ->   Go back to main menu\n\n"); //works
+			System.out.println("                 (1)     ->   View balance of your assets");	
+			System.out.println("                 (2)     ->   More info on these assets");
+			System.out.println("                 (3)     ->   Deposit into savings (inflation**) ");  
+			System.out.println("                 (4)     ->   Invest in Stocks (moderate-aggressive*)");  
+			System.out.println("                 (5)     ->   Invest in Cryptocurrency (AGGRESSIVE*)"); 
+			System.out.println("                 (6)     ->   Invest in Bonds (conservative*)"); 
+			System.out.println("                 (7)     ->   Go back to main menu\n\n"); 
 			System.out.println("             * Level of risk associated with asset. Person usually \n"
 							 + "               chooses based on their individual risk tolerance.");
 			System.out.println("             ** A savings account is an asset that puts your money\n"
@@ -57,8 +59,12 @@ public class GameMenu {
 					break;
 				}//stats case
 			
-			
 				case 2:{
+					simulationInfo.aboutTheAssets();							
+					break;
+				}//learn
+			
+				case 3:{
 					System.out.println("How much are you depositing to your savings?");
 					int save = scan.nextInt();
 					int capital = save + (int)(Math.random() * 2);//i really like this number for savings
@@ -76,12 +82,11 @@ public class GameMenu {
 						
 						for (Account a : accountStats) {
 							System.out.println(a);
-						}
-					
+						}					
 					break;	
 				}//savings case
 				
-				case 3:{
+				case 4:{
 					System.out.println("How much are you depositing to invest in stocks?");
 					int risk = scan.nextInt();
 					int capital = risk + (int)(Math.random() * 130);
@@ -104,7 +109,7 @@ public class GameMenu {
 					break;	
 				}
 				
-				case 4:{
+				case 5:{
 					System.out.println("How much are you depositing to invest in cryptocurrency?");
 					int risk = scan.nextInt();
 					int mysteryGains = 1 + (int)(Math.random() * 3);
@@ -133,7 +138,7 @@ public class GameMenu {
 					break;	
 				}
 				
-				case 5:{
+				case 6:{
 					System.out.println("How much are you depositing to invest in bonds?");
 					int risk = scan.nextInt();
 					int capital = risk + (int)(Math.random() * 70);				
@@ -155,7 +160,7 @@ public class GameMenu {
 					break;	
 				}	
 				
-				case 6:{
+				case 7:{
 					log.info("User has exited simulation!");
 					startGame = false;
 					break;	

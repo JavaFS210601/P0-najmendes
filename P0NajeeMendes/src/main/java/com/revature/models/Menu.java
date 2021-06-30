@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import com.revature.daos.AccountsDao;
 import com.revature.daos.PlayerDao;
 import com.revature.gamelogic.GameMenu;
+import com.revature.gamelogic.SimulationInfo;
 
 
 public class Menu {
@@ -16,6 +17,7 @@ public class Menu {
 		PlayerDao playerDao = new PlayerDao();
 		AccountsDao accountDao = new AccountsDao();
 		GameMenu gameMenu = new GameMenu();
+		SimulationInfo simulationInfo = new SimulationInfo();
 		
 		public void displayMenu() {
 			
@@ -25,25 +27,31 @@ public class Menu {
 			final Logger log = LogManager.getLogger(Menu.class);
 			
 			while (display==true) {
-				System.out.println("==================================================================");
+				System.out.println("===================================================================");
 				System.out.println("                            GROW YOUR NET ");
 				System.out.println("                            ------------- ");
 				System.out.println("                      - Investing Simulation - "); 
-				System.out.println("==================================================================\n");
+				System.out.println("===================================================================\n");
 				System.out.println("                      -----------------------");
 				System.out.println("                      CHOOSE AN OPTION BELOW");
 				System.out.println("                      ======================");
 				System.out.println("                      - type a word below -");	
 				System.out.println("                      -----------------------\n");
-				System.out.println("                  all     ->  list of all users");//works
-				System.out.println("                  new     ->  add new user");	//WORKS
-				System.out.println("                  start   ->  start simulation");	//works
-				System.out.println("                  delete  ->  delete your user info");//WORKS				
-				System.out.println("                  exit    ->  exit the application");//WORKS				
+				System.out.println("                  info    ->  info about simulation");
+				System.out.println("                  all     ->  list of all users");
+				System.out.println("                  new     ->  add new user");	
+				System.out.println("                  start   ->  start simulation");	
+				System.out.println("                  delete  ->  delete your user info");				
+				System.out.println("                  exit    ->  exit the application");				
 														
 				String input = scan.nextLine().toLowerCase();
 				
 				switch (input){
+				
+					case "info":{
+						simulationInfo.aboutTheSimluation();
+						break;
+					}
 				
 					case "all":{
 						System.out.println("LOADING ALL USERS.....\n");
@@ -64,7 +72,7 @@ public class Menu {
 						String first_name = scan.nextLine();
 						System.out.println("Enter your last name: ");
 						String last_name = scan.nextLine();
-						System.out.println("Choose a username: ");
+						System.out.println("Choose a username (numbers not accepted): ");
 						String user_name = scan.nextLine();
 						
 						Player newPlayer = new Player(first_name, last_name, user_name);
@@ -123,10 +131,10 @@ public class Menu {
 					}//case play game
 				
 						
-					case "delete":{
-						
-						System.out.println("\nDELETING PLAYER ACCOUNT CANNOT BE UNDONE.\n"
-								+ "YOU MUST MAKE A NEW ACCOUNT IF YOU EVER WANT TO PLAY AGAIN!\n");
+					case "delete":{				
+						System.out.println(
+								"\nYOU CAN'T GO BACK NOW.\n"
+								+ "YOU MUST MAKE A NEW ACCOUNT IF YOU EVER WANT TO PLAY AGAIN.\n");
 						System.out.println("Enter your username: ");
 						String user_name = scan.nextLine();
 						log.warn("A user has been deleted from the database!");
