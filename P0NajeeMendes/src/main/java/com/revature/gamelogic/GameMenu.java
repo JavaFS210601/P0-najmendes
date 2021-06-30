@@ -18,7 +18,7 @@ public class GameMenu {
 	Scanner scan = new Scanner(System.in);
 	AccountsDao accountDao = new AccountsDao();
 	SimulationInfo simulationInfo = new SimulationInfo();
-	final Logger log = LogManager.getLogger(Menu.class);//change to GameMenu.class...!?
+	final Logger log = LogManager.getLogger(GameMenu.class);//change to GameMenu.class...!?
 			
 	public void playGame(String user_name) {		
 		user_name = user_name;
@@ -26,19 +26,19 @@ public class GameMenu {
 		
 		while(startGame == true) {
 			System.out.println("                      -----------------------");
-			System.out.println("                              ASSETS         ");
-			System.out.println("                              ======         ");
+			System.out.println("                            INVESTMENTS         ");
+			System.out.println("                            ===========         ");
 			System.out.println("                   - enter number option below -");			
 			System.out.println("                      -----------------------\n");
-			System.out.println("                 (1)     ->   View balance of your assets");	
-			System.out.println("                 (2)     ->   More info on these assets");
+			System.out.println("                 (1)     ->   View your account");	
+			System.out.println("                 (2)     ->   More info ");
 			System.out.println("                 (3)     ->   Deposit into savings (inflation**) ");  
 			System.out.println("                 (4)     ->   Invest in Stocks (moderate-aggressive*)");  
 			System.out.println("                 (5)     ->   Invest in Cryptocurrency (AGGRESSIVE*)"); 
 			System.out.println("                 (6)     ->   Invest in Bonds (conservative*)"); 
 			System.out.println("                 (7)     ->   Go back to main menu\n\n"); 
-			System.out.println("             * Level of risk associated with asset. Person usually \n"
-							 + "               chooses based on their individual risk tolerance.");
+			System.out.println("             * Level of risk. People usually chooses based on their\n"
+							 + "               individual risk tolerance.");
 			System.out.println("             ** A savings account is an asset that puts your money\n"
 							 + "                at higher risk of inflation.");
 			
@@ -97,7 +97,7 @@ public class GameMenu {
 						scan.nextInt();
 						accountDao.updateTotalBalance(user_name);
 						
-						System.out.println("Enter 1 to view your account balance.");
+						System.out.println("Enter 1 to view your balances.");
 						scan.nextInt();
 						
 						List<Account> accountStats = accountDao.checkBalances(user_name);
@@ -110,7 +110,7 @@ public class GameMenu {
 				}
 				
 				case 5:{
-					System.out.println("How much are you depositing to invest in cryptocurrency?");
+					System.out.println("How much are you depositing to invest in cryptocurrency?\n");
 					int risk = scan.nextInt();
 					int mysteryGains = 1 + (int)(Math.random() * 3);
 					int gains = risk * mysteryGains; 		
@@ -127,7 +127,7 @@ public class GameMenu {
 							scan.nextInt();
 							accountDao.updateTotalBalance(user_name);
 							
-							System.out.println("Enter 1 to view your account balance.");
+							System.out.println("Enter 1 to view your balances.");
 							scan.nextInt();
 							
 							List<Account> accountStats = accountDao.checkBalances(user_name);
@@ -139,7 +139,7 @@ public class GameMenu {
 				}
 				
 				case 6:{
-					System.out.println("How much are you depositing to invest in bonds?");
+					System.out.println("How much are you depositing to invest in bonds?\n");
 					int risk = scan.nextInt();
 					int capital = risk + (int)(Math.random() * 70);				
 					accountDao.updateBonds(capital, user_name);
@@ -149,7 +149,7 @@ public class GameMenu {
 						scan.nextInt();
 						accountDao.updateTotalBalance(user_name);
 						
-						System.out.println("Enter 1 to view your account balance.");
+						System.out.println("Enter 1 to view your balances.");
 						scan.nextInt();
 						
 						List<Account> accountStats = accountDao.checkBalances(user_name);

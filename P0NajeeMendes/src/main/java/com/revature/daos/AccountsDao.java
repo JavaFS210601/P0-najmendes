@@ -136,7 +136,7 @@ public class AccountsDao implements AccountsDaoInterface{
 			ps.setInt(1, save);
 			ps.setString(2, player_id_fk);
 			
-			System.out.println("Your [savings] asset has been updated!");
+			System.out.println("Your [savings] asset has been updated!\n");
 			ps.executeUpdate();
 					
 		}catch (SQLException e) {
@@ -158,7 +158,7 @@ public class AccountsDao implements AccountsDaoInterface{
 			ps.setInt(1, capital);
 			ps.setString(2, player_id_fk);
 			
-			System.out.println("Your [stocks] asset has been updated!");
+			System.out.println("Your [stocks] asset has been updated!\n");
 			ps.executeUpdate();
 					
 		}catch (SQLException e) {
@@ -180,7 +180,7 @@ public class AccountsDao implements AccountsDaoInterface{
 			ps.setInt(1, cryptos);
 			ps.setString(2, player_id_fk);
 			
-			System.out.println("Your [cryptos] asset has been updated!");
+			System.out.println("Your [cryptos] asset has been updated!\n");
 			ps.executeUpdate();
 					
 		}catch (SQLException e) {
@@ -203,7 +203,7 @@ public class AccountsDao implements AccountsDaoInterface{
 			ps.setInt(1, bonds);
 			ps.setString(2, player_id_fk);
 			
-			System.out.println("Your [bonds] asset has been updated!");
+			System.out.println("Your [bonds] asset has been updated!\n");
 			ps.executeUpdate();
 					
 		}catch (SQLException e) {

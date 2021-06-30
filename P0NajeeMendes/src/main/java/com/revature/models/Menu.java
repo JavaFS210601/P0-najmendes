@@ -33,8 +33,8 @@ public class Menu {
 				System.out.println("                      - Investing Simulation - "); 
 				System.out.println("===================================================================\n");
 				System.out.println("                      -----------------------");
-				System.out.println("                      CHOOSE AN OPTION BELOW");
-				System.out.println("                      ======================");
+				System.out.println("                         CHOOSE AN OPTION");
+				System.out.println("                         ================");
 				System.out.println("                      - type a word below -");	
 				System.out.println("                      -----------------------\n");
 				System.out.println("                  info    ->  info about simulation");
@@ -83,21 +83,21 @@ public class Menu {
 //						System.out.println("Enter your username: ");
 //						String player_id_fk = scan.nextLine();	
 						
-						System.out.println("Now...take some time to think about how you want to stash you cash.\n"
-								+ "You will be asked how much money you want to allocate to each of the following assets:\n"
-								+ "savings account, stocks, crytocurrency and bonds.\n"
-								+ "Chose wisely.\n");
+						System.out.println("You will be asked how much money you want \n"
+								+ "to allocate to each of the following:\n"
+								+ "\n"
+								+ "savings account, stocks, crytocurrency and bonds.\n");
 						
-						System.out.println("How much money do you want to add to your savings account?");//blurb
+						System.out.println("How much money will fund your savings account?");//blurb
 						int savings = scan.nextInt();
 						scan.nextLine();
-						System.out.println("How much money do you want to invest in stocks?");//blurb
+						System.out.println("How much money will fund your stocks account?");//blurb
 						int stocks = scan.nextInt();
 						scan.nextLine();
-						System.out.println("How much money do you want to invest in cryptocurrency?");//blurb
+						System.out.println("How much money will fund your cryptocurrency account?");//blurb
 						int cryptos = scan.nextInt();
 						scan.nextLine();
-						System.out.println("How much money do you want to invest in bonds?");//blurb
+						System.out.println("How much money will fund your bonds account?");//blurb
 						int bonds = scan.nextInt();
 						scan.nextLine();
 						
